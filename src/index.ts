@@ -3,12 +3,22 @@
 import * as git from './git';
 import { loadConfig } from './config';
 import { error, log } from './log';
+import minimist from 'minimist';
+
+const argv = minimist<{
+  config: string;
+}>(process.argv.slice(2), {
+  // 增加配置
+  string: ['config'],
+});
 
 async function formatCommitMsg() {
   log('start');
 
+  const configPath = argv.config;
+
   try {
-    const config = await loadConfig();
+    const config = await loadConfig(configPath);
     const gitRoot = git.getRoot(config.gitRoot);
     const branch = git.getBranchName(gitRoot);
 

@@ -37,14 +37,14 @@ function resolveConfig(configPath: string): string {
 
 export async function loadConfig(configPath?: string): Promise<JPCMConfig> {
   try {
-    const explorer = cosmiconfig('prepare-commit-msg', {
+    const explorer = cosmiconfig('my-prepare-commit-msg', {
       searchPlaces: [
         'package.json',
-        '.preparecommitmsgrc',
-        '.preparecommitmsgrc.json',
-        '.preparecommitmsgrc.yaml',
-        '.preparecommitmsgrc.yml',
-        'prepare-commit-msg.config.js',
+        '.mypreparecommitmsgrc',
+        '.mypreparecommitmsgrc.json',
+        '.mypreparecommitmsgrc.yaml',
+        '.mypreparecommitmsgrc.yml',
+        'my-prepare-commit-msg.config.js',
       ],
     });
 
