@@ -11,6 +11,7 @@ export type JPCMConfig = {
   ignoreBranchesMissingTickets: boolean;
   jiraTicketPattern: string; // JIRA ticket RexExp
   messagePattern: string; // Where $J is a ticket number, $M is the message
+  prefix: string;
 };
 
 const defaultConfig = {
@@ -23,6 +24,7 @@ const defaultConfig = {
   isConventionalCommit: false,
   jiraTicketPattern: '([A-Z]+-\\d+)',
   messagePattern: '[$J] $M',
+  prefix: 'bg',
 } as JPCMConfig;
 
 function resolveConfig(configPath: string): string {
@@ -35,14 +37,14 @@ function resolveConfig(configPath: string): string {
 
 export async function loadConfig(configPath?: string): Promise<JPCMConfig> {
   try {
-    const explorer = cosmiconfig('jira-prepare-commit-msg', {
+    const explorer = cosmiconfig('prepare-commit-msg', {
       searchPlaces: [
         'package.json',
-        '.jirapreparecommitmsgrc',
-        '.jirapreparecommitmsgrc.json',
-        '.jirapreparecommitmsgrc.yaml',
-        '.jirapreparecommitmsgrc.yml',
-        'jira-prepare-commit-msg.config.js',
+        '.preparecommitmsgrc',
+        '.preparecommitmsgrc.json',
+        '.preparecommitmsgrc.yaml',
+        '.preparecommitmsgrc.yml',
+        'prepare-commit-msg.config.js',
       ],
     });
 

@@ -1,17 +1,22 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import baseDebug from 'debug';
+
+const de = baseDebug('prepare-commit-msg');
+
 const verbose = process.argv.find((arg) => arg === '--verbose');
 
 export function debug(message: string): void {
   if (!verbose) {
     return;
   }
-
-  console.log(`JIRA prepare commit msg > DEBUG: ${message}`);
+  de(message);
 }
 
 export function log(message: string): void {
-  console.log(`JIRA prepare commit msg > ${message}`);
+  de(`prepare commit msg > ${message}`);
 }
 
 export function error(err: string): void {
-  console.error(`JIRA prepare commit msg > ${err}`);
+  console.error(`prepare commit msg > ${err}`);
 }

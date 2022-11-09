@@ -20,21 +20,21 @@ import { error, log } from './log';
       return;
     }
 
-    const ticket = git.getJiraTicket(branch, config);
+    const ticket = git.getTicket(branch, config);
 
     if (ticket === null) {
       if (config.ignoreBranchesMissingTickets) {
-        log('The branch does not contain a JIRA ticket and is ignored by the configuration rule');
+        log('SKIP: The branch does not contain a ticket and is ignored by the configuration rule');
       } else {
-        error('The JIRA ticket ID not found');
+        error('The ticket ID not found');
       }
 
       return;
     }
 
-    log(`The JIRA ticket ID is: ${ticket}`);
+    log(`The ticket ID is: ${ticket}`);
 
-    git.writeJiraTicket(ticket, config);
+    git.writeTicket(ticket, config);
   } catch (err: unknown) {
     if (typeof err === 'string') {
       error(err);

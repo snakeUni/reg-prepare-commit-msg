@@ -276,8 +276,8 @@ export function getBranchName(gitRoot: string): string {
   return stdout.toString().trim();
 }
 
-export function getJiraTicket(branchName: string, config: JPCMConfig): string | null {
-  debug('getJiraTicket');
+export function getTicket(branchName: string, config: JPCMConfig): string | null {
+  debug('getTicket');
 
   const jiraIdPattern = new RegExp(config.jiraTicketPattern, 'i');
   const matched = jiraIdPattern.exec(branchName);
@@ -286,8 +286,8 @@ export function getJiraTicket(branchName: string, config: JPCMConfig): string | 
   return jiraTicket ? jiraTicket.toUpperCase() : null;
 }
 
-export function writeJiraTicket(jiraTicket: string, config: JPCMConfig): void {
-  debug('writeJiraTicket');
+export function writeTicket(jiraTicket: string, config: JPCMConfig): void {
+  debug('writeTicket');
 
   const messageFilePath = getMsgFilePath(config.gitRoot);
   let message;
