@@ -61,6 +61,7 @@
     "eslint": "eslint --ext .js --ext .ts src/",
     "eslint:fix": "eslint --ext .js --ext .ts src/ --fix",
     "prettier": "prettier --parser typescript --write \"src/**/*.ts\"",
+    "build": "tsc -p ./",
     "tsc": "tsc -p ./",
     "prepare:husky:2": "cd ./test/husky2 && git init && git checkout -b JIRA-4321-test-husky2 && npm i",
     "prepare:husky:3": "cd ./test/husky3 && git init && git checkout -b JIRA-4321-test-husky3 && npm i",
