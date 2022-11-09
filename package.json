@@ -1,8 +1,7 @@
 {
-  "name": "jira-prepare-commit-msg",
+  "name": "my-prepare-commit-msg",
   "version": "1.7.0",
   "description": "Husky Git hook to add JIRA ticket ID into the commit message",
-  "author": "Dmitry Shilov",
   "bin": "./bin/index.js",
   "keywords": [
     "husky",
@@ -14,8 +13,6 @@
     "message",
     "msg"
   ],
-  "homepage": "https://github.com/bk201-/jira-prepare-commit-msg",
-  "bugs": "https://github.com/bk201-/jira-prepare-commit-msg/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/bk201-/jira-prepare-commit-msg"
@@ -23,7 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "cosmiconfig": "^7.0.1",
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "minimist": "^1.2.7"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",

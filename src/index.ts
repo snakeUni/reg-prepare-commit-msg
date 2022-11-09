@@ -4,8 +4,7 @@ import * as git from './git';
 import { loadConfig } from './config';
 import { error, log } from './log';
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-(async (): Promise<void> => {
+async function formatCommitMsg() {
   log('start');
 
   try {
@@ -44,4 +43,9 @@ import { error, log } from './log';
   }
 
   log('done');
+}
+
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
+(async (): Promise<void> => {
+  await formatCommitMsg();
 })();
