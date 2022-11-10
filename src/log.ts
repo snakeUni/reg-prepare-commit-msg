@@ -17,6 +17,10 @@ export function log(message: string): void {
   de(`prepare commit msg > ${message}`);
 }
 
+export function logger(message: string): void {
+  console.log(`prepare commit msg > ${message}`);
+}
+
 export function error(err: string): void {
   console.error(`prepare commit msg > ${err}`);
 }

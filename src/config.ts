@@ -7,11 +7,13 @@ export type JPCMConfig = {
   commentChar: string; // Default comment char in the message
   gitRoot: string;
   isConventionalCommit: boolean; // Support https://www.conventionalcommits.org
-  ignoredBranchesPattern: string;
+  /** 排除的分支 */
+  excludeBranchesPattern: string;
+  /** 命中的分支模式 */
+  includeBranchesPattern: string;
   ignoreBranchesMissingTickets: boolean;
-  jiraTicketPattern: string; // JIRA ticket RexExp
+  ticketPattern: string; // ticket RexExp
   messagePattern: string; // Where $J is a ticket number, $M is the message
-  prefix: string;
 };
 
 const defaultConfig = {
@@ -19,12 +21,11 @@ const defaultConfig = {
   allowReplaceAllOccurrences: true,
   commentChar: '#',
   gitRoot: '',
-  ignoredBranchesPattern: '^(master|main|dev|develop|development|release)$',
+  excludeBranchesPattern: '^(master|main|dev|develop|development|release)$',
   ignoreBranchesMissingTickets: false,
   isConventionalCommit: false,
-  jiraTicketPattern: '([A-Z]+-\\d+)',
+  ticketPattern: '([A-Z]+-\\d+)',
   messagePattern: '[$J] $M',
-  prefix: 'bg',
 } as JPCMConfig;
 
 function resolveConfig(configPath: string): string {

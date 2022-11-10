@@ -41,7 +41,7 @@ function getMsgFilePath(gitRoot: string, index = 0): string {
     if (messageFilePath) {
       return messageFilePath;
     } else {
-      throw new Error(`You are using Husky 5. Please add $1 to jira-pre-commit-msg's parameters.`);
+      throw new Error(`You are using Husky 5. Please add $1 to my-pre-commit-msg's parameters.`);
     }
   }
 
@@ -279,14 +279,15 @@ export function getBranchName(gitRoot: string): string {
 export function getTicket(branchName: string, config: JPCMConfig): string | null {
   debug('getTicket');
 
-  const jiraIdPattern = new RegExp(config.jiraTicketPattern, 'i');
-  const matched = jiraIdPattern.exec(branchName);
-  const jiraTicket = matched && matched[0];
+  const idPattern = new RegExp(config.ticketPattern, 'i');
+  const matched = idPattern.exec(branchName);
+  const ticket = matched && matched[0];
 
-  return jiraTicket ? jiraTicket.toUpperCase() : null;
+  // 转成大写
+  return ticket ? ticket.toUpperCase() : null;
 }
 
-export function writeTicket(jiraTicket: string, config: JPCMConfig): void {
+export function writeTicket(ticket: string, config: JPCMConfig): void {
   debug('writeTicket');
 
   const messageFilePath = getMsgFilePath(config.gitRoot);
@@ -300,7 +301,7 @@ export function writeTicket(jiraTicket: string, config: JPCMConfig): void {
   }
 
   const messageInfo = getMessageInfo(message, config);
-  const messageWithJiraTicket = insertJiraTicketIntoMessage(messageInfo, jiraTicket, config);
+  const messageWithJiraTicket = insertJiraTicketIntoMessage(messageInfo, ticket, config);
 
   debug(messageWithJiraTicket);
 
